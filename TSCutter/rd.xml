@@ -1,0 +1,5 @@
+<Directives>
+    <Application>
+      <Assembly Name="TSCutter" Dynamic="Required All"/>
+    </Application>
+</Directives>
