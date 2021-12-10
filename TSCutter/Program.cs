@@ -70,7 +70,7 @@ namespace TSCutter
                     using (var mediaInfo = new MediaInfo.DotNetWrapper.MediaInfo())
                     {
                         mediaInfo.Open(input);
-                        double.TryParse(mediaInfo.Get(StreamKind.Video, 0, "Duration"), out totalSeconds);
+                        double.TryParse(mediaInfo.Get(StreamKind.General, 0, "Duration"), out totalSeconds);
                         totalSeconds /= 1000;
                     }
                 }
