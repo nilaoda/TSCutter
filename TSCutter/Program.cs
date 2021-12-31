@@ -79,6 +79,10 @@ namespace TSCutter
                     throw new Exception("MediaInfo解析失败! " + ex.Message);
                 }
             }
+            else
+            {
+                totalSeconds = ParseDur(options.InputDur).TotalSeconds;
+            }
             Console.WriteLine(totalSeconds + "秒");
             var timeStartStr = options.StartTime;
             var timeEndtStr = options.StopTime;
@@ -96,7 +100,7 @@ namespace TSCutter
             long startPostition = (long)(startSeconds * sizePerSec);
             long endPostition = (long)(endSeconds * sizePerSec);
             if (endPostition == 0) endPostition = fileSize;
-            using Stream inputStream = File.OpenRead(input);
+            using Stream inputStream = File.Open(input, FileMode.Open, FileAccess.Read, FileShare.Read);
             var outputPath = GetValidFileName(options.Output);
             if (string.IsNullOrEmpty(outputPath))
                 outputPath = Path.GetFileNameWithoutExtension(input) + $"_[{timeStartStr}-{timeEndtStr}]" + Path.GetExtension(input);
